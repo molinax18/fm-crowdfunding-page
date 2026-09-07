@@ -15,6 +15,6 @@
 
 @layer base {
   body {
-    @apply min-h-dvh font-commissioner bg-gray-300;
+    @apply min-h-dvh font-commissioner;
   }
 }

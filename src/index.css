@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap");
 @import "tailwindcss";
 
+:root {
+  --hero-image: 20rem;
+}
+
 @theme {
   /* Primary */
   --color-green-400: hsl(176, 50%, 47%);

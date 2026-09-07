@@ -15,7 +15,7 @@ export default function HeroBackground() {
       className="
         bg-gray-500 bg-(image:--hero-mobile) md:bg-(image:--hero-desktop)
         bg-no-repeat bg-center bg-cover
-        absolute inset-x-0 w-screen h-80
+        absolute inset-x-0 w-screen h-(--hero-image) -z-10
       "
     />
   );

@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useState, type ComponentPropsWithoutRef } from "react";
 import MenuIcon from "../assets/svg/icon-hamburger.svg?react";
 import CloseIcon from "../assets/svg/icon-close-menu.svg?react";
 import NavbarMobile from "./NavbarMobile";
-
-import crowdfundLogo from "../assets/svg/logo.svg";
 import NavbarDesktop from "./NavbarDesktop";
 
-export default function Header() {
+import crowdfundLogo from "../assets/svg/logo.svg";
+
+export default function Header({
+  className = "",
+  ...props
+}: ComponentPropsWithoutRef<"header">) {
   const [open, setOpen] = useState(false);
   const toggleMenu = () => setOpen((prev) => !prev);
 
   return (
-    <header className="relative z-10 flex items-center justify-between py-6">
+    <header
+      className={`relative z-10 flex items-center justify-between py-6 ${className}`}
+      {...props}
+    >
       <img src={crowdfundLogo} alt="Crowdfund logo" />
 
       <button

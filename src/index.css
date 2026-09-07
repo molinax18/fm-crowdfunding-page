@@ -12,3 +12,9 @@
 
   --font-commissioner: "Commissioner";
 }
+
+@layer base {
+  body {
+    @apply min-h-dvh font-commissioner bg-gray-300;
+  }
+}

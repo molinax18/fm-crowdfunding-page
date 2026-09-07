@@ -1,3 +1,9 @@
+import Header from "./components/Header";
+
 export default function App() {
-  return <div>App</div>;
+  return (
+    <div className="grid w-[90%] mx-auto max-w-300">
+      <Header />
+    </div>
+  );
 }

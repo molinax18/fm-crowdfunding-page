@@ -9,8 +9,8 @@ export default function App() {
 
       <HeroBackground />
 
-      <main className="bg-red-200">
-        <ProjectHero />
+      <main className="grid grid-cols-[minmax(min-content,var(--card-max-size))] mx-auto">
+        <ProjectHero className="-mt-20" />
       </main>
     </div>
   );

@@ -3,6 +3,7 @@
 
 :root {
   --hero-image: 20rem;
+  --card-max-size: 40rem;
 }
 
 @theme {
@@ -13,12 +14,13 @@
   /* Neutral */
   --color-black: hsl(0, 0%, 0%);
   --color-gray-500: hsl(0, 0%, 48%);
+  --color-gray-300: hsl(0, 0%, 85%);
 
   --font-commissioner: "Commissioner";
 }
 
 @layer base {
   body {
-    @apply min-h-dvh font-commissioner;
+    @apply min-h-dvh font-commissioner text-gray-500;
   }
 }

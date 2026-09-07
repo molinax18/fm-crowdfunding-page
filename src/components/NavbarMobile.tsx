@@ -16,7 +16,7 @@ export default function NavbarMobile({
         {LINKS.map(({ href, value }) => (
           <li
             key={value}
-            className="p-4 border-b border-gray-500/30 last:border-b-0"
+            className="p-4 border-b border-gray-300 last:border-b-0"
           >
             <a href={href}>{value}</a>
           </li>

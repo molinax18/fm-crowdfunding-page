@@ -3,7 +3,7 @@
 
 :root {
   --hero-image: 20rem;
-  --card-max-size: 40rem;
+  --card-max-size: 45rem;
   --card-padding: 1.5rem;
 }
 
@@ -18,6 +18,11 @@
   --color-gray-300: hsl(0, 0%, 85%);
 
   --font-commissioner: "Commissioner";
+
+  /* Size */
+  --text-title-size-lg: 1.5rem;
+  --text-title-size-xl: 1.825rem;
+  --text-title-size-md: 1.125rem;
 }
 
 @layer base {
@@ -27,6 +32,10 @@
 }
 
 @layer components {
+  .project-card-title {
+    @apply text-black font-bold;
+  }
+
   .project-card {
     @apply border border-gray-300 rounded-lg p-(--card-padding) bg-white;
   }
@@ -45,5 +54,13 @@
 
   .progress-bar::-moz-progress-bar {
     @apply rounded-full bg-green-400;
+  }
+
+  .btn-primary {
+    @apply bg-green-400 text-white hover:bg-green-700;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-300 text-gray-500;
   }
 }

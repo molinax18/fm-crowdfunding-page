@@ -2,6 +2,7 @@ import { useState, type ComponentPropsWithoutRef } from "react";
 import Bookmark from "./ui/Bookmark";
 
 import mastercraftLogo from "../assets/svg/logo-mastercraft.svg";
+import Button from "./ui/Button";
 
 export default function ProjectHero({
   className = "",
@@ -12,7 +13,7 @@ export default function ProjectHero({
 
   return (
     <section
-      aria-labelledby="project-title"
+      aria-labelledby="project-hero"
       className={`flex flex-col gap-y-6 project-card text-center ${className}`}
       {...props}
     >
@@ -23,7 +24,10 @@ export default function ProjectHero({
           className="inline -mt-20"
         />
 
-        <h1 id="project-title" className="text-2xl text-black font-bold">
+        <h1
+          id="project-title"
+          className="project-card-title text-title-size-lg"
+        >
           Mastercraft Bamboo Monitor Riser
         </h1>
       </header>
@@ -33,12 +37,9 @@ export default function ProjectHero({
       </p>
 
       <footer className="flex items-center gap-x-4 md:justify-between">
-        <button
-          type="button"
-          className="grow bg-green-400 text-white font-medium px-6 py-4 rounded-full cursor-pointer transition-colors duration-150 md:grow-0 hover:bg-green-700"
-        >
+        <Button className="cursor-pointer grow md:grow-0">
           Back this project
-        </button>
+        </Button>
         <Bookmark isMarked={isMarked} onMarked={onMarked} />
       </footer>
     </section>

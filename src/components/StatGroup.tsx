@@ -16,7 +16,9 @@ export default function StatGroup({
       className={`relative flex flex-col gap-y-1 pb-2 ${className}`}
       {...props}
     >
-      <strong className="text-3xl text-black font-bold">{amount}</strong>
+      <strong className="project-card-title text-title-size-xl">
+        {amount}
+      </strong>
       <span className="text-sm">{label}</span>
     </article>
   );

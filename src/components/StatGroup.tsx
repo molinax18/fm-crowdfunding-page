@@ -1,0 +1,23 @@
+import type { ComponentPropsWithoutRef } from "react";
+
+interface StatGroupProps extends ComponentPropsWithoutRef<"article"> {
+  amount: number;
+  label: string;
+}
+
+export default function StatGroup({
+  amount,
+  label,
+  className = "",
+  ...props
+}: StatGroupProps) {
+  return (
+    <article
+      className={`relative flex flex-col gap-y-1 pb-2 ${className}`}
+      {...props}
+    >
+      <strong className="text-3xl text-black font-bold">{amount}</strong>
+      <span className="text-sm">{label}</span>
+    </article>
+  );
+}

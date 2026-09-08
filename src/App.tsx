@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import HeroBackground from "./components/HeroBackground";
 import ProjectHero from "./components/ProjectHero";
+import ProjectStats from "./components/ProjectStats";
 
 export default function App() {
   return (
@@ -9,8 +10,9 @@ export default function App() {
 
       <HeroBackground />
 
-      <main className="grid grid-cols-[minmax(min-content,var(--card-max-size))] mx-auto">
+      <main className="grid grid-cols-[minmax(min-content,var(--card-max-size))] gap-y-8 mx-auto">
         <ProjectHero className="-mt-20" />
+        <ProjectStats />
       </main>
     </div>
   );

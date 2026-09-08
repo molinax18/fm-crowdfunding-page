@@ -7,7 +7,7 @@ export default function NavbarMobile({
 }: ComponentPropsWithoutRef<"nav">) {
   return (
     <nav
-      aria-controls="mobile-navigation"
+      id="mobile-navigation"
       aria-label="Primary navigation"
       className={`fixed -z-10 inset-0 bg-black/50 ${className}`}
       {...props}

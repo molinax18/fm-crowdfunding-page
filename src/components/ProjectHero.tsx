@@ -13,7 +13,7 @@ export default function ProjectHero({
   return (
     <section
       aria-labelledby="project-title"
-      className={`flex flex-col gap-y-6 p-6 rounded-lg border border-gray-300 bg-white text-center ${className}`}
+      className={`flex flex-col gap-y-6 project-card text-center ${className}`}
       {...props}
     >
       <header>
@@ -23,9 +23,9 @@ export default function ProjectHero({
           className="inline -mt-20"
         />
 
-        <h2 id="project-title" className="text-2xl text-black font-bold">
+        <h1 id="project-title" className="text-2xl text-black font-bold">
           Mastercraft Bamboo Monitor Riser
-        </h2>
+        </h1>
       </header>
 
       <p>
@@ -33,7 +33,10 @@ export default function ProjectHero({
       </p>
 
       <footer className="flex items-center gap-x-4 md:justify-between">
-        <button className="grow bg-green-400 text-white font-medium px-6 py-4 rounded-full cursor-pointer transition-colors duration-150 md:grow-0 hover:bg-green-700">
+        <button
+          type="button"
+          className="grow bg-green-400 text-white font-medium px-6 py-4 rounded-full cursor-pointer transition-colors duration-150 md:grow-0 hover:bg-green-700"
+        >
           Back this project
         </button>
         <Bookmark isMarked={isMarked} onMarked={onMarked} />

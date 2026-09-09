@@ -1,7 +1,11 @@
+import { useCrowdfundContext } from "../context/crowdfundContext";
 import PledgeOptionCard from "./PledgeOptionCard";
-import { PROJECT_REWARDS } from "../constants/rewards";
 
 export default function BackProjectModal() {
+  const {
+    crowdfund: { rewards },
+  } = useCrowdfundContext();
+
   return (
     <section
       aria-labelledby="back-project-title"
@@ -20,7 +24,7 @@ export default function BackProjectModal() {
         </p>
       </header>
 
-      {PROJECT_REWARDS.map((reward) => (
+      {rewards.map((reward) => (
         <PledgeOptionCard key={reward.id} {...reward} />
       ))}
     </section>

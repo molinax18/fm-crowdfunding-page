@@ -1,3 +1,4 @@
+import { CrowdfundProvider } from "./context/crowdfundContext";
 import Header from "./components/Header";
 import HeroBackground from "./components/HeroBackground";
 import ProjectAbout from "./components/ProjectAbout";
@@ -12,9 +13,11 @@ export default function App() {
       <HeroBackground />
 
       <main className="grid grid-cols-[minmax(min-content,var(--card-max-size))] gap-y-8 mx-auto pb-16">
-        <ProjectHero className="-mt-20" />
-        <ProjectStats />
-        <ProjectAbout />
+        <CrowdfundProvider>
+          <ProjectHero className="-mt-20" />
+          <ProjectStats />
+          <ProjectAbout />
+        </CrowdfundProvider>
       </main>
     </div>
   );

@@ -1,7 +1,11 @@
-import { PROJECT_REWARDS } from "../constants/rewards";
+import { useCrowdfundContext } from "../context/crowdfundContext";
 import RewardCard from "./RewardCard";
 
 export default function ProjectAbout() {
+  const {
+    crowdfund: { rewards },
+  } = useCrowdfundContext();
+
   return (
     <section
       aria-labelledby="project-about-title"
@@ -28,7 +32,7 @@ export default function ProjectAbout() {
           sticks to be stored under the stand.
         </p>
 
-        {PROJECT_REWARDS.map((reward) => (
+        {rewards.map((reward) => (
           <RewardCard key={reward.title} {...reward} />
         ))}
       </div>

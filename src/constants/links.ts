@@ -1,9 +1,6 @@
-interface Link {
-  href: string;
-  value: string;
-}
+import type { ILink } from "../types/link";
 
-export const LINKS: Link[] = [
+export const LINKS: ILink[] = [
   {
     href: "#",
     value: "About",

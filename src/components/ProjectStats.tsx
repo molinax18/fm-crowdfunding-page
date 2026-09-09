@@ -1,5 +1,6 @@
-import { type ComponentPropsWithoutRef } from "react";
-import { currentAmount, GOAL_AMOUNT, PROJECT_STATS } from "../constants/stats";
+import type { ComponentPropsWithoutRef } from "react";
+import type { IStatUI } from "../types/stats";
+import { useCrowdfundContext } from "../context/crowdfundContext";
 import StatGroup from "./StatGroup";
 import ProgressBar from "./ProgressBar";
 
@@ -7,13 +8,31 @@ export default function ProjectStats({
   className = "",
   ...props
 }: ComponentPropsWithoutRef<"section">) {
+  const {
+    crowdfund: { stats },
+  } = useCrowdfundContext();
+  const projectStats: IStatUI[] = [
+    {
+      amount: stats.amount,
+      label: `of ${stats.goalAmount} backed`,
+    },
+    {
+      amount: stats.backers,
+      label: "total backers",
+    },
+    {
+      amount: stats.daysLeft,
+      label: "days left",
+    },
+  ];
+
   return (
     <section
       aria-label="Project statistics"
       className={`grid gap-y-6 project-card text-center md:grid-cols-3 md:gap-8 md:text-left ${className}`}
       {...props}
     >
-      {PROJECT_STATS.map(({ amount, label }) => (
+      {projectStats.map(({ amount, label }) => (
         <StatGroup
           key={label}
           amount={amount}
@@ -28,8 +47,8 @@ export default function ProjectStats({
       ))}
 
       <ProgressBar
-        currentVal={currentAmount}
-        maxVal={GOAL_AMOUNT}
+        currentVal={stats.amount}
+        maxVal={stats.goalAmount}
         className="md:col-span-full"
       />
     </section>

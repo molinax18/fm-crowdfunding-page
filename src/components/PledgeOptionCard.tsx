@@ -1,4 +1,4 @@
-import type { Reward } from "../constants/rewards";
+import type { IReward } from "../types/reward";
 import { useState } from "react";
 import PledgeOptionAmount from "./PledgeOptionAmount";
 
@@ -8,7 +8,7 @@ export default function PledgeOptionCard({
   pledge,
   description,
   remaining,
-}: Reward) {
+}: IReward) {
   const [selected, setSelected] = useState(false);
   const isSoldOut = remaining === 0;
   const onSelected = () => setSelected((prev) => !prev);

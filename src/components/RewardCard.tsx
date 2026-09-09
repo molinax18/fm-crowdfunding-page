@@ -1,7 +1,7 @@
-import type { Reward } from "../constants/rewards";
+import type { IReward } from "../types/reward";
 import Button from "./ui/Button";
 
-interface RewardCardProps extends Reward {
+interface RewardCardProps extends IReward {
   onSelect?: () => void;
 }
 

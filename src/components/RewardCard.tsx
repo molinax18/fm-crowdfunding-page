@@ -1,7 +1,7 @@
 import type { IReward } from "../types/reward";
 import { createPortal } from "react-dom";
 import Button from "./ui/Button";
-import Modal from "./Modal";
+import Modal from "./ui/Modal";
 import BackProjectModal from "./BackProjectModal";
 import useModal from "../hooks/useModal";
 

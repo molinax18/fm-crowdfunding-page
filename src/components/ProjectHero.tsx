@@ -2,7 +2,7 @@ import { useState, type ComponentPropsWithoutRef } from "react";
 import { createPortal } from "react-dom";
 import Bookmark from "./ui/Bookmark";
 import Button from "./ui/Button";
-import Modal from "./Modal";
+import Modal from "./ui/Modal";
 import BackProjectModal from "./BackProjectModal";
 import useModal from "../hooks/useModal";
 

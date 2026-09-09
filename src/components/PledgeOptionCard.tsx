@@ -47,7 +47,7 @@ export default function PledgeOptionCard({
               {title}
             </h3>
             <p className="text-green-400 font-medium text-sm">
-              <span className="sr-only">Minimum pledge: </span>Pledge ${pledge}
+              <span className="sr-only">Minimum pledge: </span>Pledge ${pledge}{" "}
               or more
             </p>
           </div>
@@ -65,7 +65,11 @@ export default function PledgeOptionCard({
       </div>
 
       {isSameReward && !isSoldOut && (
-        <PledgeOptionAmount className="pt-6 border-t border-gray-300 md:row-start-3 md:col-span-full md:flex-row md:items-center md:justify-between" />
+        <PledgeOptionAmount
+          className="pt-6 border-t border-gray-300 md:row-start-3 md:col-span-full md:flex-row md:items-center md:justify-between"
+          rewardId={id}
+          defaultValue={pledge}
+        />
       )}
     </article>
   );

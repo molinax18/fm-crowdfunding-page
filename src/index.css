@@ -63,4 +63,20 @@
   .btn-secondary {
     @apply bg-gray-300 text-gray-500;
   }
+
+  .checkbox {
+    @apply appearance-none size-6 shrink-0 grid place-content-center border border-gray-300 rounded-full bg-white cursor-pointer;
+  }
+
+  .checkbox::before {
+    @apply content-[""] size-3 rounded-full bg-green-400 scale-0 transition-transform duration-150 ease-in-out;
+  }
+
+  .checkbox:checked::before {
+    @apply scale-100;
+  }
+
+  .checkbox:focus-visible {
+    @apply outline-2 outline-green-700 outline-offset-2;
+  }
 }

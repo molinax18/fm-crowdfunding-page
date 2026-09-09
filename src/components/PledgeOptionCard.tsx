@@ -1,6 +1,10 @@
-import type { IReward } from "../types/reward";
-import { useState } from "react";
+import type { IReward, TRewardId } from "../types/reward";
 import PledgeOptionAmount from "./PledgeOptionAmount";
+
+interface PledgeOptionCardProps extends IReward {
+  currentRewardId: TRewardId | null;
+  onChange: (id: TRewardId) => void;
+}
 
 export default function PledgeOptionCard({
   id,
@@ -8,15 +12,16 @@ export default function PledgeOptionCard({
   pledge,
   description,
   remaining,
-}: IReward) {
-  const [selected, setSelected] = useState(false);
+  currentRewardId,
+  onChange,
+}: PledgeOptionCardProps) {
   const isSoldOut = remaining === 0;
-  const onSelected = () => setSelected((prev) => !prev);
+  const isSameReward = currentRewardId === id;
 
   return (
     <article
       aria-labelledby={`${id}-title`}
-      className={`grid gap-y-6 project-card transition-colors duration-150 md:grid-cols-12 ${isSoldOut ? "opacity-50" : ""} ${selected ? "border-green-400" : "border-gray-300"}`}
+      className={`grid gap-y-6 project-card transition-colors duration-150 md:grid-cols-12 ${isSoldOut ? "opacity-50" : ""} ${isSameReward ? "border-green-400" : "border-gray-300"}`}
     >
       <header className="flex items-center gap-x-4 md:row-start-1 md:col-span-10">
         <label
@@ -28,8 +33,8 @@ export default function PledgeOptionCard({
             type="checkbox"
             name={id}
             id={id}
-            checked={selected}
-            onChange={onSelected}
+            checked={isSameReward}
+            onChange={() => onChange(id)}
             aria-describedby={`${id}-description`}
             disabled={isSoldOut}
           />
@@ -59,7 +64,7 @@ export default function PledgeOptionCard({
         <span>left</span>
       </div>
 
-      {selected && !isSoldOut && (
+      {isSameReward && !isSoldOut && (
         <PledgeOptionAmount className="pt-6 border-t border-gray-300 md:row-start-3 md:col-span-full md:flex-row md:items-center md:justify-between" />
       )}
     </article>

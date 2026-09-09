@@ -1,10 +1,19 @@
+import type { TRewardId } from "../types/reward";
 import { useCrowdfundContext } from "../context/crowdfundContext";
 import PledgeOptionCard from "./PledgeOptionCard";
+import useRewardId from "../hooks/useRewardId";
 
-export default function BackProjectModal() {
+interface BackProjectModalProps {
+  defaultValue?: TRewardId;
+}
+
+export default function BackProjectModal({
+  defaultValue,
+}: BackProjectModalProps) {
   const {
     crowdfund: { rewards },
   } = useCrowdfundContext();
+  const { currentRewardId, updateRewardId } = useRewardId(defaultValue || null);
 
   return (
     <section
@@ -25,7 +34,12 @@ export default function BackProjectModal() {
       </header>
 
       {rewards.map((reward) => (
-        <PledgeOptionCard key={reward.id} {...reward} />
+        <PledgeOptionCard
+          currentRewardId={currentRewardId}
+          onChange={updateRewardId}
+          key={reward.id}
+          {...reward}
+        />
       ))}
     </section>
   );

@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import CloseModalIcon from "../assets/svg/icon-close-modal.svg?react";
+import CloseModalIcon from "../../assets/svg/icon-close-modal.svg?react";
 
 interface BackProjectModalProps extends ComponentPropsWithoutRef<"div"> {
   isOpen: boolean;

@@ -83,19 +83,18 @@ export default function PledgeOptionAmount({
         </p>
       </div>
 
-      {isOpen &&
-        createPortal(
-          <Modal
-            isOpen={isOpen}
-            onClose={closeModal}
-            aria-labelledby="success-modal-title"
-            defaultClose={false}
-            className="max-w-(--card-size-md)"
-          >
-            <SuccessModal onClose={closeModal} />
-          </Modal>,
-          document.body,
-        )}
+      {createPortal(
+        <Modal
+          isOpen={isOpen}
+          onClose={closeModal}
+          aria-labelledby="success-modal-title"
+          defaultClose={false}
+          className="max-w-(--card-size-md)"
+        >
+          <SuccessModal onClose={closeModal} />
+        </Modal>,
+        document.body,
+      )}
     </>
   );
 }

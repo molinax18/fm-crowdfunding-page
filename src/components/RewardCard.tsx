@@ -57,13 +57,12 @@ export default function RewardCard({
         </footer>
       </article>
 
-      {isOpen &&
-        createPortal(
-          <Modal isOpen={isOpen} onClose={closeModal}>
-            <BackProjectModal defaultValue={id} />
-          </Modal>,
-          document.body,
-        )}
+      {createPortal(
+        <Modal isOpen={isOpen} onClose={closeModal}>
+          <BackProjectModal defaultValue={id} />
+        </Modal>,
+        document.body,
+      )}
     </>
   );
 }

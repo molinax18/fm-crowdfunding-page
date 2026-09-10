@@ -8,7 +8,7 @@
   --card-padding: 1.5rem;
   --overlay-color: rgb(0 0 0 / 0.35);
   --overlay-blur: blur(0.5rem);
-  --overlay-transition: 150ms ease-out;
+  --overlay-transition: 200ms ease-out;
   --modal-opacity: 1;
 }
 

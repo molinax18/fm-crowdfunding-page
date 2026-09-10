@@ -50,13 +50,12 @@ export default function ProjectHero({
         </footer>
       </section>
 
-      {isOpen &&
-        createPortal(
-          <Modal isOpen={isOpen} onClose={closeModal}>
-            <BackProjectModal />
-          </Modal>,
-          document.body,
-        )}
+      {createPortal(
+        <Modal isOpen={isOpen} onClose={closeModal}>
+          <BackProjectModal />
+        </Modal>,
+        document.body,
+      )}
     </>
   );
 }

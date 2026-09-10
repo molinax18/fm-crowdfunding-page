@@ -99,7 +99,7 @@
   }
 
   .progress-bar::-webkit-progress-bar {
-    @apply rounded-full bg-gray-300;
+    @apply rounded-full bg-gray-300 overflow-hidden;
   }
 
   .progress-bar::-webkit-progress-value {

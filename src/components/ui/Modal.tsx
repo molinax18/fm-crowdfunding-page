@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import CloseModalIcon from "../../assets/svg/icon-close-modal.svg?react";
+import useModalAccessibility from "../../hooks/useModalAccessibility";
 
 interface BackProjectModalProps extends ComponentPropsWithoutRef<"div"> {
   isOpen: boolean;
@@ -14,6 +15,8 @@ export default function Modal({
   className = "",
   ...props
 }: BackProjectModalProps) {
+  const { closeButtonRef } = useModalAccessibility(isOpen, onClose);
+
   if (!isOpen) {
     return null;
   }
@@ -28,6 +31,7 @@ export default function Modal({
         {...props}
       >
         <button
+          ref={closeButtonRef}
           type="button"
           onClick={() => onClose()}
           className="absolute top-9 right-6 cursor-pointer"

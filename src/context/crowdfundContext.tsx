@@ -49,6 +49,7 @@ export function CrowdfundProvider({ children }: { children: ReactNode }) {
       value={{
         crowdfund,
         updateCrowdfund,
+        isCrowdfundComplete,
       }}
     >
       {children}

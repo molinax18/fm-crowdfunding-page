@@ -9,4 +9,5 @@ export interface ICrowdfundState {
 export interface ICrowdfundContext {
   crowdfund: ICrowdfundState;
   updateCrowdfund: (id: TRewardId, amount: number) => void;
+  isCrowdfundComplete: (crowdfund: ICrowdfundState) => boolean;
 }

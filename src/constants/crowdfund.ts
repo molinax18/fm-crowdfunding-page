@@ -1,6 +1,11 @@
 import type { ICrowdfundState } from "../types/crowdfundContext";
+import getDaysDifference from "../utils/getDaysDifference";
 
-export const DAYS_LEFT = 60;
+const DAYS_LEFT = 56;
+const CURRENT_DATE = new Date();
+const CROWDFUND_END_DATE = new Date(CURRENT_DATE);
+CROWDFUND_END_DATE.setDate(CROWDFUND_END_DATE.getDate() + DAYS_LEFT);
+
 export const GOAL_AMOUNT = 100000;
 export const BAMBOO_STAND_REMAINING = 120;
 export const BLACK_EDITION_STAND_REMAINING = 80;
@@ -11,7 +16,7 @@ export const CROWDFUND_INITIAL_VALUES: ICrowdfundState = {
     amount: 0,
     goalAmount: GOAL_AMOUNT,
     backers: 0,
-    daysLeft: DAYS_LEFT,
+    daysLeft: getDaysDifference(CURRENT_DATE, CROWDFUND_END_DATE),
   },
   rewards: [
     {
@@ -58,7 +63,7 @@ export const CROWDFUND_CONTEXT_INITIAL_VALUES: ICrowdfundState = {
     amount: 89914,
     goalAmount: GOAL_AMOUNT,
     backers: 5007,
-    daysLeft: 56,
+    daysLeft: getDaysDifference(CURRENT_DATE, CROWDFUND_END_DATE),
   },
   rewards: [
     {

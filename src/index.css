@@ -4,6 +4,7 @@
 :root {
   --hero-image: 20rem;
   --card-max-size: 45rem;
+  --card-size-md: 38rem;
   --card-padding: 1.5rem;
 }
 

@@ -1,26 +1,14 @@
-import type { TRewardId } from "../types/reward";
-import { useState, type SubmitEvent } from "react";
-import { useCrowdfundContext } from "../context/crowdfundContext";
+import { useState } from "react";
 
-export default function usePledgeAmount(
-  rewardId: TRewardId,
-  defaultValue?: string,
-) {
-  const { updatedReward } = useCrowdfundContext();
+export default function usePledgeAmount(defaultValue?: string) {
   const [amount, setAmount] = useState(defaultValue ?? "");
   const amountToNumber = Number(amount.trim());
   const isValid = amountToNumber >= Number(defaultValue ?? 0);
 
-  const onSubmit = (event: SubmitEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    updatedReward(rewardId, amountToNumber);
-  };
-
   return {
     amount,
+    amountToNumber,
     setAmount,
     isValid,
-    onSubmit,
   };
 }

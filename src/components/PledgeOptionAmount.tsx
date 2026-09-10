@@ -19,7 +19,7 @@ export default function PledgeOptionAmount({
   className = "",
   ...props
 }: IPledgeOptionAmount) {
-  const { updatedReward } = useCrowdfundContext();
+  const { updateCrowdfund } = useCrowdfundContext();
   const { isOpen, openModal, closeModal } = useModal();
   const { amount, isValid, amountToNumber, setAmount } = usePledgeAmount(
     String(defaultValue),
@@ -29,7 +29,7 @@ export default function PledgeOptionAmount({
   const onSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    updatedReward(rewardId, amountToNumber);
+    updateCrowdfund(rewardId, amountToNumber);
     openModal();
   };
 

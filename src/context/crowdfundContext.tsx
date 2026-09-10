@@ -4,34 +4,52 @@ import type {
   ICrowdfundState,
 } from "../types/crowdfundContext";
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { CROWDFUND_INITIAL_VALUES } from "../constants/crowdfund";
+import {
+  CROWDFUND_CONTEXT_INITIAL_VALUES,
+  CROWDFUND_INITIAL_VALUES,
+} from "../constants/crowdfund";
 
 const CrowdfundContext = createContext<ICrowdfundContext | null>(null);
 
 export function CrowdfundProvider({ children }: { children: ReactNode }) {
   const [crowdfund, setCrowdfund] = useState<ICrowdfundState>(
-    CROWDFUND_INITIAL_VALUES,
+    CROWDFUND_CONTEXT_INITIAL_VALUES,
   );
 
-  const updatedReward = (id: TRewardId, amount: number) => {
-    setCrowdfund((prev) => ({
-      ...prev,
+  const isCrowdfundComplete = (crowdfund: ICrowdfundState) => {
+    const { stats } = crowdfund;
+    return stats.daysLeft === 0 || stats.amount >= stats.goalAmount;
+  };
+
+  const updateCrowdfund = (id: TRewardId, amount: number) => {
+    const crowdfundModified = {
+      ...crowdfund,
       stats: {
-        ...prev.stats,
-        amount: prev.stats.amount + amount,
-        backers: prev.stats.backers + 1,
+        ...crowdfund.stats,
+        amount: crowdfund.stats.amount + amount,
+        backers: crowdfund.stats.backers + 1,
       },
-      rewards: prev.rewards.map((reward) =>
+      rewards: crowdfund.rewards.map((reward) =>
         reward.id === id
           ? { ...reward, remaining: reward.remaining - 1 }
           : reward,
       ),
-    }));
+    };
+
+    if (isCrowdfundComplete(crowdfundModified)) {
+      setCrowdfund(CROWDFUND_INITIAL_VALUES);
+      return;
+    }
+
+    setCrowdfund(crowdfundModified);
   };
 
   return (
     <CrowdfundContext.Provider
-      value={{ crowdfund, setCrowdfund, updatedReward }}
+      value={{
+        crowdfund,
+        updateCrowdfund,
+      }}
     >
       {children}
     </CrowdfundContext.Provider>

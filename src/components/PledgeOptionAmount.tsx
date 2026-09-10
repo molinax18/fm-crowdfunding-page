@@ -89,6 +89,7 @@ export default function PledgeOptionAmount({
             isOpen={isOpen}
             onClose={closeModal}
             aria-labelledby="success-modal-title"
+            defaultClose={false}
             className="max-w-(--card-size-md)"
           >
             <SuccessModal onClose={closeModal} />

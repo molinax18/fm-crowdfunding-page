@@ -6,6 +6,7 @@ interface BackProjectModalProps extends ComponentPropsWithoutRef<"div"> {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  defaultClose?: boolean;
 }
 
 export default function Modal({
@@ -13,6 +14,7 @@ export default function Modal({
   onClose,
   children,
   className = "",
+  defaultClose = true,
   ...props
 }: BackProjectModalProps) {
   const { closeButtonRef } = useModalAccessibility(isOpen, onClose);
@@ -30,15 +32,17 @@ export default function Modal({
         className={`relative max-h-[calc(100dvh-2rem)] w-full max-w-(--card-max-size) overflow-y-auto overscroll-contain project-card ${className}`}
         {...props}
       >
-        <button
-          ref={closeButtonRef}
-          type="button"
-          onClick={() => onClose()}
-          className="absolute top-9 right-6 cursor-pointer"
-          aria-label="Close back this project dialog"
-        >
-          <CloseModalIcon aria-hidden="true" focusable="false" />
-        </button>
+        {defaultClose && (
+          <button
+            ref={closeButtonRef}
+            type="button"
+            onClick={() => onClose()}
+            className="absolute top-9 right-6 cursor-pointer"
+            aria-label="Close back this project dialog"
+          >
+            <CloseModalIcon aria-hidden="true" focusable="false" />
+          </button>
+        )}
         {children}
       </div>
     </div>

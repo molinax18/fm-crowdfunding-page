@@ -15,7 +15,7 @@ export default function Header({
 
   return (
     <header
-      className={`relative z-10 flex items-center justify-between py-6 ${className}`}
+      className={`relative z-50 flex items-center justify-between py-6 ${className}`}
       {...props}
     >
       <a href="#main-content" aria-label="Go to main content">

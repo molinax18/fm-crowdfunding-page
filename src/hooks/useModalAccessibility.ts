@@ -10,6 +10,9 @@ export default function useModalAccessibility(
   useEffect(() => {
     if (!isOpen) return;
 
+    const originalBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     previousActiveElement.current = document.activeElement as HTMLElement;
     closeButtonRef.current?.focus();
 
@@ -21,6 +24,7 @@ export default function useModalAccessibility(
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalBodyOverflow;
       previousActiveElement.current?.focus();
     };
   }, [isOpen, onClose]);

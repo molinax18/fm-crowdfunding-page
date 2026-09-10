@@ -22,12 +22,12 @@ export default function Modal({
   }
 
   return (
-    <div className={`fixed z-50 inset-0 grid place-content-center bg-black/50`}>
+    <div className="fixed inset-0 z-50 grid place-items-center overflow-hidden bg-black/50 p-4">
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="back-project-title"
-        className={`relative project-card w-[90%] max-w-(--card-max-size) mx-auto ${className}`}
+        className={`relative max-h-[calc(100dvh-2rem)] w-full max-w-(--card-max-size) overflow-y-auto overscroll-contain project-card ${className}`}
         {...props}
       >
         <button

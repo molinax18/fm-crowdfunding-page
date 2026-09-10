@@ -2,15 +2,15 @@ import type { ILink } from "../types/link";
 
 export const LINKS: ILink[] = [
   {
-    href: "#",
+    href: "#project-about-title",
     value: "About",
   },
   {
-    href: "#",
+    href: "#project-stats",
     value: "Discover",
   },
   {
-    href: "#",
+    href: "#project-title",
     value: "Get Started",
   },
 ];

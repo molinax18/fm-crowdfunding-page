@@ -18,7 +18,9 @@ export default function Header({
       className={`relative z-10 flex items-center justify-between py-6 ${className}`}
       {...props}
     >
-      <img src={crowdfundLogo} alt="Crowdfund logo" />
+      <a href="#main-content" aria-label="Go to main content">
+        <img src={crowdfundLogo} alt="Crowdfund" />
+      </a>
 
       <button
         className="md:hidden"

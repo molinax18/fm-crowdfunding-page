@@ -11,9 +11,12 @@ export default function ProgressBar({
   className = "",
   ...props
 }: ProgressBarProps) {
+  const percentage = Math.round((currentVal / maxVal) * 100);
+
   return (
     <progress
       aria-label="Project funding progress"
+      aria-valuetext={`${percentage}% funded`}
       className={`progress-bar ${className}`}
       value={currentVal}
       max={maxVal}

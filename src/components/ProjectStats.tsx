@@ -28,6 +28,7 @@ export default function ProjectStats({
 
   return (
     <section
+      id="project-stats"
       aria-label="Project statistics"
       className={`grid gap-y-6 project-card text-center md:grid-cols-3 md:gap-8 md:text-left ${className}`}
       {...props}

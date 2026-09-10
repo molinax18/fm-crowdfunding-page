@@ -24,6 +24,7 @@ export default function PledgeOptionAmount({
   const { amount, isValid, amountToNumber, setAmount } = usePledgeAmount(
     String(defaultValue),
   );
+  const inputId = `pledge-${rewardId}`;
 
   const onSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -42,13 +43,14 @@ export default function PledgeOptionAmount({
 
         <form className="flex justify-center gap-x-2" onSubmit={onSubmit}>
           <label
-            htmlFor="pledge"
+            htmlFor={inputId}
             className={`
             flex gap-x-1 px-6 group py-4 w-full max-w-40
             border border-gray-300 rounded-full
             focus-within:outline-2 ${!isValid ? "focus-within:outline-red-500" : "focus-within:outline-green-400"}
           `}
           >
+            <span className="sr-only">Pledge amount</span>
             <DollarIcon
               className={
                 !isValid ? "text-red-500" : "group-focus-within:text-green-400"
@@ -59,7 +61,10 @@ export default function PledgeOptionAmount({
               value={amount}
               onChange={(event) => setAmount(event.target.value)}
               name="pledge"
-              id="pledge"
+              id={inputId}
+              inputMode="decimal"
+              aria-invalid={!isValid}
+              aria-describedby={`${inputId}-hint`}
               className="w-full outline-none font-medium text-black"
             />
           </label>
@@ -73,6 +78,9 @@ export default function PledgeOptionAmount({
             Continue
           </Button>
         </form>
+        <p id={`${inputId}-hint`} className="sr-only">
+          Enter an amount greater than or equal to the minimum pledge.
+        </p>
       </div>
 
       {isOpen &&
@@ -80,6 +88,7 @@ export default function PledgeOptionAmount({
           <Modal
             isOpen={isOpen}
             onClose={closeModal}
+            aria-labelledby="success-modal-title"
             className="max-w-(--card-size-md)"
           >
             <SuccessModal onClose={closeModal} />

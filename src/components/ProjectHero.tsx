@@ -19,7 +19,7 @@ export default function ProjectHero({
   return (
     <>
       <section
-        aria-labelledby="project-hero"
+        aria-labelledby="project-title"
         className={`flex flex-col gap-y-6 project-card text-center ${className}`}
         {...props}
       >

@@ -17,10 +17,12 @@ export default function PledgeOptionCard({
 }: PledgeOptionCardProps) {
   const isSoldOut = remaining === 0;
   const isSameReward = currentRewardId === id;
+  const titleId = `pledge-${id}-title`;
+  const descriptionId = `pledge-${id}-description`;
 
   return (
     <article
-      aria-labelledby={`${id}-title`}
+      aria-labelledby={titleId}
       className={`grid gap-y-6 project-card transition-colors duration-150 md:grid-cols-12 ${isSoldOut ? "opacity-50" : ""} ${isSameReward ? "border-green-400" : "border-gray-300"}`}
     >
       <header className="flex items-center gap-x-4 md:row-start-1 md:col-span-10">
@@ -35,15 +37,12 @@ export default function PledgeOptionCard({
             id={id}
             checked={isSameReward}
             onChange={() => onChange(id)}
-            aria-describedby={`${id}-description`}
+            aria-describedby={descriptionId}
             disabled={isSoldOut}
           />
 
           <div className="flex items-center flex-col gap-1 md:flex-row md:gap-4">
-            <h3
-              id={`${id}-title`}
-              className="project-card-title text-title-size-md"
-            >
+            <h3 id={titleId} className="project-card-title text-title-size-md">
               {title}
             </h3>
             <p className="text-green-400 font-medium text-sm">
@@ -53,7 +52,7 @@ export default function PledgeOptionCard({
           </div>
         </label>
       </header>
-      <p id={`${id}-description`} className="md:row-start-2 md:col-span-full">
+      <p id={descriptionId} className="md:row-start-2 md:col-span-full">
         {description.pledge}
       </p>
 

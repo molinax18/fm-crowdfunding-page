@@ -6,6 +6,10 @@
   --card-max-size: 45rem;
   --card-size-md: 38rem;
   --card-padding: 1.5rem;
+  --overlay-color: rgb(0 0 0 / 0.35);
+  --overlay-blur: blur(0.5rem);
+  --overlay-transition: 150ms ease-out;
+  --modal-opacity: 1;
 }
 
 @theme {
@@ -39,6 +43,51 @@
 @layer components {
   .project-card-title {
     @apply text-black font-bold;
+  }
+
+  .modal-container {
+    opacity: var(--modal-opacity);
+    animation: modal-enter var(--overlay-transition) both;
+  }
+
+  @keyframes modal-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: var(--modal-opacity);
+    }
+  }
+
+  .overlay {
+    background-color: var(--overlay-color);
+    backdrop-filter: var(--overlay-blur);
+    -webkit-backdrop-filter: var(--overlay-blur);
+    animation: overlay-enter var(--overlay-transition) both;
+    transition:
+      background-color var(--overlay-transition),
+      backdrop-filter var(--overlay-transition);
+  }
+
+  @keyframes overlay-enter {
+    from {
+      background-color: transparent;
+      backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0);
+    }
+    to {
+      background-color: var(--overlay-color);
+      backdrop-filter: var(--overlay-blur);
+      -webkit-backdrop-filter: var(--overlay-blur);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .overlay,
+    .modal-container {
+      animation: none;
+      transition: none;
+    }
   }
 
   .project-card {

@@ -24,12 +24,12 @@ export default function Modal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center overflow-hidden bg-black/50 p-4">
+    <div className="overlay fixed inset-0 z-50 grid place-items-center overflow-hidden p-4">
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="back-project-title"
-        className={`relative max-h-[calc(100dvh-2rem)] w-full max-w-(--card-max-size) overflow-y-auto overscroll-contain project-card ${className}`}
+        className={`modal-container relative max-h-[calc(100dvh-2rem)] w-full max-w-(--card-max-size) overflow-y-auto overscroll-contain project-card ${className}`}
         {...props}
       >
         {defaultClose && (

@@ -7,11 +7,13 @@ import BackProjectModal from "./BackProjectModal";
 import useModal from "../hooks/useModal";
 
 import mastercraftLogo from "../assets/svg/logo-mastercraft.svg";
+import { useCrowdfundContext } from "../context/crowdfundContext";
 
 export default function ProjectHero({
   className = "",
   ...props
 }: ComponentPropsWithoutRef<"section">) {
+  const { crowdfund, isCrowdfundComplete } = useCrowdfundContext();
   const { isOpen, openModal, closeModal } = useModal();
   const [isMarked, setIsMarked] = useState(false);
   const onMarked = () => setIsMarked((prev) => !prev);
@@ -43,7 +45,12 @@ export default function ProjectHero({
         </p>
 
         <footer className="flex items-center gap-x-4 md:justify-between">
-          <Button className="cursor-pointer grow md:grow-0" onClick={openModal}>
+          <Button
+            className={`grow md:grow-0 ${isCrowdfundComplete(crowdfund) ? "cursor-not-allowed" : "cursor-pointer"}`}
+            variant={isCrowdfundComplete(crowdfund) ? "secondary" : "primary"}
+            disabled={isCrowdfundComplete(crowdfund)}
+            onClick={openModal}
+          >
             Back this project
           </Button>
           <Bookmark isMarked={isMarked} onMarked={onMarked} />

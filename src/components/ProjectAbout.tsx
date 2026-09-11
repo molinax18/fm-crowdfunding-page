@@ -31,10 +31,18 @@ export default function ProjectAbout() {
         </p>
 
         {isCrowdfundComplete(crowdfund) ? (
-          <footer className="project-card">
+          <footer className="project-card flex flex-col gap-y-4">
+            <h3 className="project-card-title text-title-size-lg">
+              ¡The crowdfund is over!
+            </h3>
             <p>
-              If you are seeing this, then I forgot to update the crowdfund days
-              left. I hope I remember it later...
+              ¡Thanks to all of you for contributing to the project! We are so
+              grateful to you!
+              <br />
+              <span className="text-xs">
+                (If you are seeing this, then I forgot to update the crowdfund
+                days left. I hope I remember it later...)
+              </span>
             </p>
           </footer>
         ) : (

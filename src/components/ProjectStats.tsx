@@ -13,15 +13,15 @@ export default function ProjectStats({
   } = useCrowdfundContext();
   const projectStats: IStatUI[] = [
     {
-      amount: stats.amount,
+      amount: stats.amount.toLocaleString("en-EN"),
       label: `of ${stats.goalAmount} backed`,
     },
     {
-      amount: stats.backers,
+      amount: stats.backers.toLocaleString("en-EN"),
       label: "total backers",
     },
     {
-      amount: stats.daysLeft,
+      amount: stats.daysLeft.toString(),
       label: "days left",
     },
   ];

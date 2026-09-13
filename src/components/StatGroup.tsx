@@ -1,9 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
+import type { IStatUI } from "../types/stats";
 
-interface StatGroupProps extends ComponentPropsWithoutRef<"article"> {
-  amount: number;
-  label: string;
-}
+interface StatGroupProps extends IStatUI, ComponentPropsWithoutRef<"article"> {}
 
 export default function StatGroup({
   amount,

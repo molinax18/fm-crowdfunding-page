@@ -6,6 +6,7 @@ export interface IStat {
 }
 
 export interface IStatUI {
-  amount: number;
+  amount: string;
   label: string;
+  daysLeft?: string;
 }

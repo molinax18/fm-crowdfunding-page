@@ -1,7 +1,7 @@
 import type { TRewardId } from "../types/reward";
 import { useState } from "react";
 
-export default function useRewardId(id: TRewardId | null) {
+export function useRewardId(id: TRewardId | null) {
   const [currentRewardId, setCurrentRewardId] = useState<TRewardId | null>(
     id || null,
   );

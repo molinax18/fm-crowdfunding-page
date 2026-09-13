@@ -1,8 +1,10 @@
-import { useState, type ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
+import { useModal } from "../hooks/useModal";
 import MenuIcon from "../assets/svg/icon-hamburger.svg?react";
 import CloseIcon from "../assets/svg/icon-close-menu.svg?react";
 import NavbarMobile from "./NavbarMobile";
 import NavbarDesktop from "./NavbarDesktop";
+import Modal from "./ui/Modal";
 
 import crowdfundLogo from "../assets/svg/logo.svg";
 
@@ -10,12 +12,11 @@ export default function Header({
   className = "",
   ...props
 }: ComponentPropsWithoutRef<"header">) {
-  const [open, setOpen] = useState(false);
-  const toggleMenu = () => setOpen((prev) => !prev);
+  const { closeModal, openModal, isOpen } = useModal();
 
   return (
     <header
-      className={`relative z-50 flex items-center justify-between py-6 ${className}`}
+      className={`relative z-20 flex items-center justify-between py-6 ${className}`}
       {...props}
     >
       <a href="#main-content" aria-label="Go to main content">
@@ -25,19 +26,32 @@ export default function Header({
       <button
         className="md:hidden"
         type="button"
-        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        aria-expanded={open}
+        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={isOpen}
         aria-controls="mobile-navigation"
-        onClick={toggleMenu}
       >
-        {open ? (
-          <CloseIcon aria-hidden="true" focusable="false" />
+        {isOpen ? (
+          <CloseIcon
+            aria-hidden="true"
+            focusable="false"
+            onClick={closeModal}
+          />
         ) : (
-          <MenuIcon aria-hidden="true" focusable="false" />
+          <MenuIcon aria-hidden="true" focusable="false" onClick={openModal} />
         )}
       </button>
 
-      {open && <NavbarMobile className="md:hidden" />}
+      <Modal
+        defaultClose={false}
+        isOpen={isOpen}
+        onClose={closeModal}
+        className="z-10!"
+      >
+        <Modal.Content className="relative top-18">
+          <NavbarMobile />
+        </Modal.Content>
+      </Modal>
+
       <NavbarDesktop className="hidden md:inline-block" />
     </header>
   );

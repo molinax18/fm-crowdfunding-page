@@ -1,9 +1,8 @@
 import type { IReward } from "../types/reward";
-import { createPortal } from "react-dom";
+import { useModal } from "../hooks/useModal";
 import Button from "./ui/Button";
 import Modal from "./ui/Modal";
 import BackProjectModal from "./BackProjectModal";
-import useModal from "../hooks/useModal";
 
 export default function RewardCard({
   id,
@@ -57,12 +56,15 @@ export default function RewardCard({
         </footer>
       </article>
 
-      {createPortal(
-        <Modal isOpen={isOpen} onClose={closeModal}>
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        className="grid place-content-center"
+      >
+        <Modal.Content className="modal-card project-card">
           <BackProjectModal defaultValue={id} />
-        </Modal>,
-        document.body,
-      )}
+        </Modal.Content>
+      </Modal>
     </>
   );
 }

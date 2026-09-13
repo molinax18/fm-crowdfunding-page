@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+
 import heroMobile from "../assets/bg/image-hero-mobile.jpg";
 import heroDesktop from "../assets/bg/image-hero-desktop.jpg";
 

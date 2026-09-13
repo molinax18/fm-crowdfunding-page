@@ -1,13 +1,12 @@
 import type { TRewardId } from "../types/reward";
-import { type ComponentPropsWithoutRef, type SubmitEvent } from "react";
+import type { ComponentPropsWithoutRef, SubmitEvent } from "react";
+import { useCrowdfundContext } from "../context/useCrowdfundContext";
+import { usePledgeAmount } from "../hooks/usePledgeAmount";
+import { useModal } from "../hooks/useModal";
 import DollarIcon from "../assets/svg/currency-dollar.svg?react";
 import Button from "./ui/Button";
-import usePledgeAmount from "../hooks/usePledgeAmount";
-import useModal from "../hooks/useModal";
-import { createPortal } from "react-dom";
 import Modal from "./ui/Modal";
 import SuccessModal from "./SuccessModal";
-import { useCrowdfundContext } from "../context/useCrowdfundContext";
 
 interface IPledgeOptionAmount extends ComponentPropsWithoutRef<"div"> {
   rewardId: TRewardId;
@@ -83,18 +82,17 @@ export default function PledgeOptionAmount({
         </p>
       </div>
 
-      {createPortal(
-        <Modal
-          isOpen={isOpen}
-          onClose={closeModal}
-          aria-labelledby="success-modal-title"
-          defaultClose={false}
-          className="max-w-(--card-size-md)"
-        >
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        aria-labelledby="success-modal-title"
+        defaultClose={false}
+        className="grid place-content-center"
+      >
+        <Modal.Content className="modal-card project-card max-w-(--card-size-md)">
           <SuccessModal onClose={closeModal} />
-        </Modal>,
-        document.body,
-      )}
+        </Modal.Content>
+      </Modal>
     </>
   );
 }

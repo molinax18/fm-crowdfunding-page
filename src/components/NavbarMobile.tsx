@@ -1,27 +1,18 @@
-import { useEffect, type ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { LINKS } from "../constants/links";
 
 export default function NavbarMobile({
   className = "",
   ...props
 }: ComponentPropsWithoutRef<"nav">) {
-  useEffect(() => {
-    const originalBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = originalBodyOverflow;
-    };
-  }, []);
-
   return (
     <nav
       id="mobile-navigation"
       aria-label="Primary navigation"
-      className={`overlay fixed -z-20 inset-0 ${className}`}
+      className={`w-[90%] mx-auto rounded-lg bg-white ${className}`}
       {...props}
     >
-      <ul className="relative top-18 flex flex-col w-[90%] mx-auto rounded-lg bg-white text-black font-medium">
+      <ul className="flex flex-col text-black font-medium">
         {LINKS.map(({ href, value }) => (
           <li
             key={value}

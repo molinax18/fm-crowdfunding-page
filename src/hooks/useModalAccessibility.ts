@@ -1,9 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export default function useModalAccessibility(
-  isOpen: boolean,
-  onClose: () => void,
-) {
+export function useModalAccessibility(isOpen: boolean, onClose: () => void) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
 

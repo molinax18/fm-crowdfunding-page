@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
+import Button from "./ui/Button";
 
 import successImage from "../assets/svg/icon-check.svg";
-import Button from "./ui/Button";
 
 interface SuccessModalProps extends ComponentPropsWithoutRef<"section"> {
   onClose: () => void;

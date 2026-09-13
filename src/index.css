@@ -50,6 +50,10 @@
     animation: modal-enter var(--overlay-transition) both;
   }
 
+  .modal-card {
+    @apply relative max-h-[calc(100dvh-4rem)] w-[90%] mx-auto overflow-y-auto overscroll-contain md:max-h-[calc(100dvh-2rem)] md:max-w-(--card-max-size);
+  }
+
   @keyframes modal-enter {
     from {
       opacity: 0;

@@ -1,13 +1,12 @@
 import { useState, type ComponentPropsWithoutRef } from "react";
-import { createPortal } from "react-dom";
+import { useCrowdfundContext } from "../context/useCrowdfundContext";
+import { useModal } from "../hooks/useModal";
 import Bookmark from "./ui/Bookmark";
 import Button from "./ui/Button";
 import Modal from "./ui/Modal";
 import BackProjectModal from "./BackProjectModal";
-import useModal from "../hooks/useModal";
 
 import mastercraftLogo from "../assets/svg/logo-mastercraft.svg";
-import { useCrowdfundContext } from "../context/useCrowdfundContext";
 
 export default function ProjectHero({
   className = "",
@@ -57,12 +56,15 @@ export default function ProjectHero({
         </footer>
       </section>
 
-      {createPortal(
-        <Modal isOpen={isOpen} onClose={closeModal}>
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        className="grid place-content-center"
+      >
+        <Modal.Content className="modal-card project-card">
           <BackProjectModal />
-        </Modal>,
-        document.body,
-      )}
+        </Modal.Content>
+      </Modal>
     </>
   );
 }

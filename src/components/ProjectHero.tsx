@@ -7,7 +7,7 @@ import BackProjectModal from "./BackProjectModal";
 import useModal from "../hooks/useModal";
 
 import mastercraftLogo from "../assets/svg/logo-mastercraft.svg";
-import { useCrowdfundContext } from "../context/crowdfundContext";
+import { useCrowdfundContext } from "../context/useCrowdfundContext";
 
 export default function ProjectHero({
   className = "",

@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 import type { IStatUI } from "../types/stats";
-import { useCrowdfundContext } from "../context/crowdfundContext";
+import { useCrowdfundContext } from "../context/useCrowdfundContext";
 import StatGroup from "./StatGroup";
 import ProgressBar from "./ProgressBar";
 

@@ -7,7 +7,7 @@ import useModal from "../hooks/useModal";
 import { createPortal } from "react-dom";
 import Modal from "./ui/Modal";
 import SuccessModal from "./SuccessModal";
-import { useCrowdfundContext } from "../context/crowdfundContext";
+import { useCrowdfundContext } from "../context/useCrowdfundContext";
 
 interface IPledgeOptionAmount extends ComponentPropsWithoutRef<"div"> {
   rewardId: TRewardId;

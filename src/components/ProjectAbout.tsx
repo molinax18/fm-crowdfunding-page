@@ -1,4 +1,4 @@
-import { useCrowdfundContext } from "../context/crowdfundContext";
+import { useCrowdfundContext } from "../context/useCrowdfundContext";
 import RewardCard from "./RewardCard";
 
 export default function ProjectAbout() {

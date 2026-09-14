@@ -35,19 +35,32 @@ export default function Header({
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
       >
-        <MenuIcon aria-hidden="true" focusable="false" />
+        {isOpen ? (
+          <CloseIcon aria-hidden="true" focusable="false" />
+        ) : (
+          <MenuIcon aria-hidden="true" focusable="false" />
+        )}
       </button>
 
-      <Dialog.Root open={isOpen}>
+      <Dialog.Root
+        open={isOpen}
+        onOpenChange={(open) => (open ? openModal() : closeModal())}
+      >
         <Dialog.Portal>
           <Dialog.Overlay className="overlay fixed inset-0 z-10 overflow-hidden" />
           <Dialog.Content className="absolute top-18 z-11 inset-x-0">
-            <Dialog.Close onClick={closeModal}>
-              <CloseIcon
-                aria-hidden="true"
-                focusable="false"
-                className="fixed top-7 right-[5%]"
-              />
+            <Dialog.Title className="sr-only">Navigation menu</Dialog.Title>
+            <Dialog.Description className="sr-only">
+              Primary navigation links
+            </Dialog.Description>
+            <Dialog.Close asChild>
+              <button
+                type="button"
+                className="fixed top-7 right-[5%] cursor-pointer"
+                aria-label="Close navigation menu"
+              >
+                <CloseIcon aria-hidden="true" focusable="false" />
+              </button>
             </Dialog.Close>
             <NavbarMobile
               className="w-[90%] mx-auto rounded-lg bg-white"

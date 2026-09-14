@@ -22,7 +22,7 @@ export default function BackProjectModal({
   const { currentRewardId, updateRewardId } = useRewardId(defaultValue || null);
 
   return (
-    <Dialog.Root open={isOpen}>
+    <Dialog.Root open={isOpen} onOpenChange={(open) => !open && closeModal()}>
       <Dialog.Portal>
         <Dialog.Overlay className="overlay fixed inset-0 z-10 overflow-hidden" />
         <Dialog.Content className="modal-card project-card">
@@ -46,10 +46,12 @@ export default function BackProjectModal({
               >
                 Back this project
               </Dialog.Title>
-              <p>
-                Want to support us in bringing Mastercraft Bamboo Monitor Riser
-                out in the world?
-              </p>
+              <Dialog.Description asChild>
+                <p>
+                  Want to support us in bringing Mastercraft Bamboo Monitor
+                  Riser out in the world?
+                </p>
+              </Dialog.Description>
             </header>
 
             {rewards.map((reward) => (

@@ -16,7 +16,7 @@ export default function SuccessModal({
   ...props
 }: SuccessModalProps) {
   return (
-    <Dialog.Root open={isOpen}>
+    <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
         <Dialog.Overlay className="overlay fixed inset-0 z-40 overflow-hidden" />
         <Dialog.Content className="modal-card project-card z-50">
@@ -39,11 +39,13 @@ export default function SuccessModal({
               </Dialog.Title>
             </header>
 
-            <p>
-              Your pledge brings us one step closer to sharing Mastercraft
-              Bamboo Monitor Riser worldwide. You will get an email once our
-              campaign is completed.
-            </p>
+            <Dialog.Description asChild>
+              <p>
+                Your pledge brings us one step closer to sharing Mastercraft
+                Bamboo Monitor Riser worldwide. You will get an email once our
+                campaign is completed.
+              </p>
+            </Dialog.Description>
 
             <Button onClick={onClose} className="cursor-pointer">
               Got it!

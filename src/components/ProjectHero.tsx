@@ -3,7 +3,6 @@ import { useCrowdfundContext } from "../context/useCrowdfundContext";
 import { useModal } from "../hooks/useModal";
 import Bookmark from "./ui/Bookmark";
 import Button from "./ui/Button";
-import Modal from "./ui/Modal";
 import BackProjectModal from "./BackProjectModal";
 
 import mastercraftLogo from "../assets/svg/logo-mastercraft.svg";
@@ -56,15 +55,7 @@ export default function ProjectHero({
         </footer>
       </section>
 
-      <Modal
-        isOpen={isOpen}
-        onClose={closeModal}
-        className="grid place-content-center"
-      >
-        <Modal.Content className="modal-card project-card">
-          <BackProjectModal />
-        </Modal.Content>
-      </Modal>
+      <BackProjectModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 }

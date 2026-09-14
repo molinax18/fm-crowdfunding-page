@@ -1,7 +1,6 @@
 import type { IReward } from "../types/reward";
 import { useModal } from "../hooks/useModal";
 import Button from "./ui/Button";
-import Modal from "./ui/Modal";
 import BackProjectModal from "./BackProjectModal";
 
 export default function RewardCard({
@@ -11,7 +10,7 @@ export default function RewardCard({
   description,
   remaining,
 }: IReward) {
-  const { closeModal, isOpen, openModal } = useModal();
+  const { isOpen, openModal, closeModal } = useModal();
   const isSoldOut = remaining === 0;
 
   return (
@@ -56,15 +55,11 @@ export default function RewardCard({
         </footer>
       </article>
 
-      <Modal
+      <BackProjectModal
         isOpen={isOpen}
-        onClose={closeModal}
-        className="grid place-content-center"
-      >
-        <Modal.Content className="modal-card project-card">
-          <BackProjectModal defaultValue={id} />
-        </Modal.Content>
-      </Modal>
+        closeModal={closeModal}
+        defaultValue={id}
+      />
     </>
   );
 }

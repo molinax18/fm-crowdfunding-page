@@ -5,7 +5,6 @@ import { usePledgeAmount } from "../hooks/usePledgeAmount";
 import { useModal } from "../hooks/useModal";
 import DollarIcon from "../assets/svg/currency-dollar.svg?react";
 import Button from "./ui/Button";
-import Modal from "./ui/Modal";
 import SuccessModal from "./SuccessModal";
 
 interface IPledgeOptionAmount extends ComponentPropsWithoutRef<"div"> {
@@ -82,17 +81,7 @@ export default function PledgeOptionAmount({
         </p>
       </div>
 
-      <Modal
-        isOpen={isOpen}
-        onClose={closeModal}
-        aria-labelledby="success-modal-title"
-        defaultClose={false}
-        className="grid place-content-center"
-      >
-        <Modal.Content className="modal-card project-card max-w-(--card-size-md)">
-          <SuccessModal onClose={closeModal} />
-        </Modal.Content>
-      </Modal>
+      <SuccessModal isOpen={isOpen} onClose={closeModal} />
     </>
   );
 }
